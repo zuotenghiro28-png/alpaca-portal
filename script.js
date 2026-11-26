@@ -30,7 +30,7 @@ const OMIKUJI_STAMPS = [
   { src: "alpaca_12.png", quote: "「着きました。もふ」", note: "仕事が終わったら、浮いた時間でゆっくり好きな場所へ出かけましょう。" }
 ];
 
-// 1. ファーストビュー：アルパカたちの自然な行動AI
+// 1. ファーストビュー：アルパカたちの自然な行動AI（既存機能維持）
 (function initPlayground() {
   const field = document.getElementById("alpacaField");
   const stage = document.getElementById("meadowStage");
@@ -190,7 +190,7 @@ const OMIKUJI_STAMPS = [
   const initialPercents = [9, 25, 41, 57, 73, 85];
   initialIndices.forEach((idx, i) => spawnAlpaca(idx, initialPercents[i]));
 
-  // 床をクリックするとアルパカたちが寄ってくる
+  // 草原をクリックするとアルパカたちが寄ってくる
   stage.addEventListener("click", (e) => {
     if (e.target.closest(".stage-controls") || e.target.closest(".alpaca-actor")) return;
     const rect = field.getBoundingClientRect();
@@ -363,26 +363,55 @@ const OMIKUJI_STAMPS = [
   }
 })();
 
-// 2. 記事カテゴリフィルター
+// 2. おすすめ記事カテゴリ絞り込み＆件数表示更新
 (function initArticleFilter() {
   const tabs = document.querySelectorAll(".tab-btn");
-  const rows = document.querySelectorAll(".article-row");
+  const cards = document.querySelectorAll(".article-card");
+  const countEl = document.getElementById("articlesCount");
+  const total = cards.length;
+
+  const filterLabels = {
+    all: "すべて",
+    gas: "GAS・自動化",
+    ai: "AI活用・制作",
+    work: "仕事の進め方"
+  };
+
+  function applyFilter(filter) {
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const match = filter === "all" || card.dataset.category === filter;
+      card.classList.toggle("is-hidden", !match);
+      if (match) visibleCount++;
+    });
+
+    if (countEl) {
+      if (filter === "all") {
+        countEl.textContent = `全${total}件中 ${visibleCount}件を表示`;
+      } else {
+        const label = filterLabels[filter] || filter;
+        countEl.textContent = `「${label}」 ${visibleCount}件を表示（全${total}件中）`;
+      }
+    }
+  }
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      tabs.forEach((t) => t.classList.remove("active"));
-      tab.classList.add("active");
-
-      const filter = tab.dataset.filter;
-      rows.forEach((row) => {
-        const match = filter === "all" || row.dataset.category === filter;
-        row.classList.toggle("is-hidden", !match);
+      tabs.forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
       });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      applyFilter(tab.dataset.filter || "all");
     });
   });
+
+  applyFilter("all");
 })();
 
-// 3. 今日のひとこと
+// 3. 今日のひとこと（読書後のひと休みエリア）
 (function initOmikuji() {
   const btn = document.getElementById("btnOmikuji");
   const img = document.getElementById("omikujiImg");
@@ -423,26 +452,23 @@ const OMIKUJI_STAMPS = [
   });
 })();
 
-// 4. スクロール連動
+// 4. スクロール追従ボタン（フッター付近では隠して文章を邪魔しない）
 (function initScrollEffects() {
   const floatingBtn = document.getElementById("floatingNoteBtn");
+  const footer = document.getElementById("siteFooter");
+  if (!floatingBtn) return;
 
-  window.addEventListener("scroll", () => {
-    if (floatingBtn) floatingBtn.classList.toggle("show", window.scrollY > 480);
-  }, { passive: true });
-
-  const reveals = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach((el) => io.observe(el));
-  } else {
-    reveals.forEach((el) => el.classList.add("is-visible"));
+  function updateFloatingVisibility() {
+    const pastHero = window.scrollY > 520;
+    let nearFooter = false;
+    if (footer) {
+      const footerTop = footer.getBoundingClientRect().top;
+      nearFooter = footerTop < window.innerHeight - 20;
+    }
+    floatingBtn.classList.toggle("show", pastHero && !nearFooter);
   }
+
+  window.addEventListener("scroll", updateFloatingVisibility, { passive: true });
+  window.addEventListener("resize", updateFloatingVisibility, { passive: true });
+  updateFloatingVisibility();
 })();
