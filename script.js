@@ -1,33 +1,33 @@
-// AIと旅する係長 ポータル
+﻿// AIと旅する係長 ポータル
 
 const ALPACA_CATALOG = [
-  { src: "assets/stamps/alpaca_05.png", mode: "walk", lines: ["いま向かってます", "定時で帰ります", "ちょっと見回り中"] },
-  { src: "assets/stamps/alpaca_10.png", mode: "slide", lines: ["本日は省エネです", "台車がいちばん楽", "自動化に任せてます"] },
-  { src: "assets/stamps/alpaca_08.png", mode: "idle", lines: ["本日も、なで待ち", "ちょっと休憩中", "ぼーっとしてます"] },
-  { src: "assets/stamps/alpaca_09.png", mode: "idle", lines: ["待ってないですよ。首は伸びたけど。", "17:30まだかな", "次の旅先を考えてます"] },
-  { src: "assets/stamps/alpaca_12.png", mode: "walk", lines: ["着きました。もふ", "荷物は少なめです", "そろそろ出かけます"] },
-  { src: "assets/stamps/alpaca_02.png", mode: "idle", lines: ["今日は無理せずに", "いったん座りましょう", "続きは明日でいいかも"] },
-  { src: "assets/stamps/alpaca_03.png", mode: "idle", lines: ["了解です。ぬくぬく", "ひざ掛けが欠かせません", "あたたかくしてどうぞ"] },
-  { src: "assets/stamps/alpaca_04.png", mode: "idle", lines: ["ちょっと考える顔です", "これGASで減らせそう", "うーん、なるほど"] },
-  { src: "assets/stamps/alpaca_01.png", mode: "idle", lines: ["ありがとう。しみた", "いつもお疲れさまです", "助かります"] },
-  { src: "assets/stamps/alpaca_06.png", mode: "idle", lines: ["ちょっと失礼します", "そっと見てます", "おじゃまします"] },
-  { src: "assets/stamps/alpaca_07.png", mode: "idle", lines: ["重さは気持ちです", "資料を読み込み中", "ちょっと一息"] },
-  { src: "assets/stamps/alpaca_11.png", mode: "idle", lines: ["おはよう。毛は元気", "まずはコーヒーから", "今日もぼちぼちで"] }
+  { src: "alpaca_05.png", mode: "walk", lines: ["いま向かってます", "定時で帰ります", "ちょっと見回り中"] },
+  { src: "alpaca_10.png", mode: "slide", lines: ["本日は省エネです", "台車がいちばん楽", "自動化に任せてます"] },
+  { src: "alpaca_08.png", mode: "idle", lines: ["本日も、なで待ち", "ちょっと休憩中", "ぼーっとしてます"] },
+  { src: "alpaca_09.png", mode: "idle", lines: ["待ってないですよ。首は伸びたけど。", "17:30まだかな", "次の旅先を考えてます"] },
+  { src: "alpaca_12.png", mode: "walk", lines: ["着きました。もふ", "荷物は少なめです", "そろそろ出かけます"] },
+  { src: "alpaca_02.png", mode: "idle", lines: ["今日は無理せずに", "いったん座りましょう", "続きは明日でいいかも"] },
+  { src: "alpaca_03.png", mode: "idle", lines: ["了解です。ぬくぬく", "ひざ掛けが欠かせません", "あたたかくしてどうぞ"] },
+  { src: "alpaca_04.png", mode: "idle", lines: ["ちょっと考える顔です", "これGASで減らせそう", "うーん、なるほど"] },
+  { src: "alpaca_01.png", mode: "idle", lines: ["ありがとう。しみた", "いつもお疲れさまです", "助かります"] },
+  { src: "alpaca_06.png", mode: "idle", lines: ["ちょっと失礼します", "そっと見てます", "おじゃまします"] },
+  { src: "alpaca_07.png", mode: "idle", lines: ["重さは気持ちです", "資料を読み込み中", "ちょっと一息"] },
+  { src: "alpaca_11.png", mode: "idle", lines: ["おはよう。毛は元気", "まずはコーヒーから", "今日もぼちぼちで"] }
 ];
 
 const OMIKUJI_STAMPS = [
-  { src: "assets/stamps/alpaca_01.png", quote: "「ありがとう。しみた」", note: "忙しくても、ひとこと感謝を返せると現場の空気が少しやわらぎます。" },
-  { src: "assets/stamps/alpaca_02.png", quote: "「今日は無理せずに」", note: "区切りのいいところで切り上げて、続きは明日の自分に任せましょう。" },
-  { src: "assets/stamps/alpaca_03.png", quote: "「了解です。ぬくぬく」", note: "温かい飲み物を1杯いれてから取りかかるくらいがちょうどいいです。" },
-  { src: "assets/stamps/alpaca_04.png", quote: "「ちょっと考える顔です」", note: "行き詰まったら、いま困っていることをそのままAIに書き出してみてください。" },
-  { src: "assets/stamps/alpaca_05.png", quote: "「いま向かってます」", note: "大きな改革より、今日の5分を減らす一歩からで十分進みます。" },
-  { src: "assets/stamps/alpaca_06.png", quote: "「ちょっと失礼します」", note: "全部を自分で抱え込まず、使えるテンプレートは遠慮なく借りましょう。" },
-  { src: "assets/stamps/alpaca_07.png", quote: "「重さは気持ちです」", note: "分厚い資料や議事録は、まずNotebookLMに読ませてから眺めると楽です。" },
-  { src: "assets/stamps/alpaca_08.png", quote: "「本日も、なで待ち」", note: "地味な改善ほど気づかれにくいので、自分で自分を労っておきましょう。" },
-  { src: "assets/stamps/alpaca_09.png", quote: "「待ってないですよ。首は伸びたけど。」", note: "確認待ちや転記待ちのスキマ時間は、GASに任せるとだいぶ気が楽になります。" },
-  { src: "assets/stamps/alpaca_10.png", quote: "「本日は省エネです」", note: "毎日全力だと持ちません。台車に乗るくらいの省エネ運転の日も大事です。" },
-  { src: "assets/stamps/alpaca_11.png", quote: "「おはよう。毛は元気」", note: "今日片づけることを3つだけ決めておくと、夕方バタバタしにくくなります。" },
-  { src: "assets/stamps/alpaca_12.png", quote: "「着きました。もふ」", note: "仕事が終わったら、浮いた時間でゆっくり好きな場所へ出かけましょう。" }
+  { src: "alpaca_01.png", quote: "「ありがとう。しみた」", note: "忙しくても、ひとこと感謝を返せると現場の空気が少しやわらぎます。" },
+  { src: "alpaca_02.png", quote: "「今日は無理せずに」", note: "区切りのいいところで切り上げて、続きは明日の自分に任せましょう。" },
+  { src: "alpaca_03.png", quote: "「了解です。ぬくぬく」", note: "温かい飲み物を1杯いれてから取りかかるくらいがちょうどいいです。" },
+  { src: "alpaca_04.png", quote: "「ちょっと考える顔です」", note: "行き詰まったら、いま困っていることをそのままAIに書き出してみてください。" },
+  { src: "alpaca_05.png", quote: "「いま向かってます」", note: "大きな改革より、今日の5分を減らす一歩からで十分進みます。" },
+  { src: "alpaca_06.png", quote: "「ちょっと失礼します」", note: "全部を自分で抱え込まず、使えるテンプレートは遠慮なく借りましょう。" },
+  { src: "alpaca_07.png", quote: "「重さは気持ちです」", note: "分厚い資料や議事録は、まずNotebookLMに読ませてから眺めると楽です。" },
+  { src: "alpaca_08.png", quote: "「本日も、なで待ち」", note: "地味な改善ほど気づかれにくいので、自分で自分を労っておきましょう。" },
+  { src: "alpaca_09.png", quote: "「待ってないですよ。首は伸びたけど。」", note: "確認待ちや転記待ちのスキマ時間は、GASに任せるとだいぶ気が楽になります。" },
+  { src: "alpaca_10.png", quote: "「本日は省エネです」", note: "毎日全力だと持ちません。台車に乗るくらいの省エネ運転の日も大事です。" },
+  { src: "alpaca_11.png", quote: "「おはよう。毛は元気」", note: "今日片づけることを3つだけ決めておくと、夕方バタバタしにくくなります。" },
+  { src: "alpaca_12.png", quote: "「着きました。もふ」", note: "仕事が終わったら、浮いた時間でゆっくり好きな場所へ出かけましょう。" }
 ];
 
 // 1. ファーストビュー：アルパカたちの自然な行動AI
