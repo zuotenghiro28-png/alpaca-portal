@@ -1,0 +1,1092 @@
+:root {
+  --paper: #f7f4ec;
+  --paper-alt: #f0ebe0;
+  --paper-sunset: #efe2d1;
+  --surface: #fcfaf5;
+  --ink: #342820;
+  --ink-muted: #6e5f53;
+  --line: rgba(52, 40, 32, 0.14);
+  --line-strong: rgba(52, 40, 32, 0.28);
+  --denim: #34526e;
+  --denim-hover: #263d54;
+  --note: #218573;
+  --note-hover: #196b5c;
+  --line-green: #2c9653;
+  --line-green-hover: #227a42;
+  --lavender: #7d68a6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  background-color: var(--paper);
+  /* ごく薄い紙の方眼感 */
+  background-image:
+    linear-gradient(to right, rgba(52, 40, 32, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 40, 32, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  color: var(--ink);
+  line-height: 1.85;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.8s ease;
+}
+
+.container {
+  width: min(1020px, 90%);
+  margin: 0 auto;
+}
+
+.br-pc {
+  display: inline;
+}
+
+/* Scroll Reveal（控えめ） */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(247, 244, 236, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 14px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.brand-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+}
+
+.brand-name {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 1.04rem;
+  letter-spacing: 0.04em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--ink);
+}
+
+/* Buttons（マットで落ち着いた質感） */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-note-sm {
+  padding: 8px 15px;
+  font-size: 0.82rem;
+  background: var(--ink);
+  color: #fff;
+}
+
+.btn-note-sm:hover {
+  background: var(--denim);
+}
+
+.btn-note {
+  background: var(--note);
+  color: #fff;
+}
+
+.btn-note:hover {
+  background: var(--note-hover);
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--line-green);
+  border-color: var(--line-green);
+}
+
+.btn-line:hover {
+  background: var(--line-green);
+  color: #fff;
+}
+
+.btn-outline {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--line-strong);
+}
+
+.btn-outline:hover {
+  border-color: var(--ink);
+  background: #fff;
+}
+
+.arrow-icon {
+  font-size: 0.92em;
+  line-height: 1;
+}
+
+/* Hero Stage：やさしい空と草原でアルパカが楽しく遊ぶファーストビュー */
+.hero-stage {
+  position: relative;
+  min-height: 670px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 46px;
+  background: linear-gradient(180deg, #b8dff5 0%, #e1f2fb 44%, #f4f9f2 63%, #b5df9c 63%);
+  overflow: hidden;
+  border-bottom: 4px solid #75ad5e;
+  transition: background 0.9s ease;
+}
+
+.hero-stage.is-sunset {
+  background: linear-gradient(180deg, #746496 0%, #d48977 38%, #f8cfa2 63%, #8fb66c 63%);
+}
+
+.sky-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sun {
+  position: absolute;
+  top: 34px;
+  right: 9%;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff5be 25%, #ffd26a 100%);
+  box-shadow: 0 0 44px rgba(255, 210, 106, 0.72);
+  transition: top 0.9s ease, background 0.9s ease, box-shadow 0.9s ease;
+}
+
+.hero-stage.is-sunset .sun {
+  top: 98px;
+  background: radial-gradient(circle, #ffefc0 20%, #f58c5b 100%);
+  box-shadow: 0 0 56px rgba(245, 140, 91, 0.8);
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 999px;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  top: 44px;
+  left: 7%;
+  width: 112px;
+  height: 34px;
+  animation: cloudDrift 34s linear infinite;
+}
+.cloud-1::before { width: 48px; height: 48px; top: -22px; left: 16px; }
+.cloud-1::after { width: 38px; height: 38px; top: -14px; right: 18px; }
+
+.cloud-2 {
+  top: 90px;
+  left: 58%;
+  width: 138px;
+  height: 40px;
+  opacity: 0.84;
+  animation: cloudDrift 46s linear infinite reverse;
+}
+.cloud-2::before { width: 56px; height: 56px; top: -26px; left: 24px; }
+.cloud-2::after { width: 42px; height: 42px; top: -16px; right: 20px; }
+
+.cloud-3 {
+  top: 38px;
+  left: 34%;
+  width: 82px;
+  height: 26px;
+  opacity: 0.72;
+  animation: cloudDrift 28s linear infinite;
+}
+.cloud-3::before { width: 36px; height: 36px; top: -16px; left: 14px; }
+.cloud-3::after { width: 28px; height: 28px; top: -10px; right: 14px; }
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-30px); }
+  50% { transform: translateX(40px); }
+  100% { transform: translateX(-30px); }
+}
+
+.hills-svg {
+  position: absolute;
+  bottom: 248px;
+  left: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.hill-back {
+  fill: #d0e9be;
+  transition: fill 0.9s ease;
+}
+
+.hill-mid {
+  fill: #bce0a4;
+  transition: fill 0.9s ease;
+}
+
+.hero-stage.is-sunset .hill-back {
+  fill: #98b384;
+}
+
+.hero-stage.is-sunset .hill-mid {
+  fill: #7da569;
+}
+
+.hero-top {
+  position: relative;
+  z-index: 10;
+  max-width: 720px;
+  text-align: center;
+}
+
+.hero-card {
+  background: rgba(252, 250, 245, 0.88);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  padding: 32px 36px;
+  box-shadow: 0 16px 38px rgba(52, 40, 32, 0.1);
+}
+
+.hero-kicker {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(1.9rem, 4.2vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.hero-lead {
+  font-size: 0.94rem;
+  color: var(--ink-muted);
+  margin-bottom: 24px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* アルパカたちが遊ぶ草原ステージ */
+.alpaca-stage {
+  position: relative;
+  z-index: 8;
+  margin-top: 28px;
+  height: 290px;
+  cursor: pointer;
+}
+
+.meadow-fence {
+  position: absolute;
+  top: 26px;
+  left: 0;
+  right: 0;
+  height: 26px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    #d4b690 0px,
+    #d4b690 11px,
+    transparent 11px,
+    transparent 64px
+  );
+  border-top: 3px solid #c19e73;
+  border-bottom: 3px solid #c19e73;
+  opacity: 0.72;
+  pointer-events: none;
+}
+
+.meadow-ground {
+  position: absolute;
+  inset: 40px 0 0 0;
+  background: linear-gradient(180deg, #b5df9c 0%, #92ca77 56%, #75ad5e 100%);
+  pointer-events: none;
+  transition: background 0.9s ease;
+}
+
+.hero-stage.is-sunset .meadow-ground {
+  background: linear-gradient(180deg, #95be75 0%, #78a45c 56%, #5d8945 100%);
+}
+
+.meadow-path {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56%;
+  height: 60px;
+  background: radial-gradient(ellipse at center, rgba(235, 217, 188, 0.5) 0%, transparent 72%);
+}
+
+/* さりげない小さな野の花（絵文字を使わずCSSの小さな花びらドットで表現） */
+.meadow-flower {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+.f1 { left: 8%; top: 28%; background: #fff7c2; box-shadow: 4px 2px 0 rgba(255,255,255,0.7); }
+.f2 { left: 22%; top: 72%; background: #ffd8e2; box-shadow: -3px 3px 0 rgba(255,255,255,0.6); }
+.f3 { left: 48%; top: 24%; background: #ffffff; box-shadow: 4px -2px 0 #fff7c2; }
+.f4 { left: 68%; top: 68%; background: #e6dcf8; box-shadow: 3px 3px 0 rgba(255,255,255,0.7); }
+.f5 { left: 86%; top: 34%; background: #fff7c2; box-shadow: -4px 2px 0 rgba(255,255,255,0.7); }
+.f6 { left: 36%; top: 48%; background: #ffffff; box-shadow: 3px 2px 0 #ffd8e2; }
+
+.stage-bar {
+  position: relative;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stage-caption {
+  font-size: 0.75rem;
+  color: #fff;
+  background: rgba(52, 40, 32, 0.62);
+  padding: 4px 12px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+}
+
+.stage-controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ctrl-btn {
+  background: rgba(252, 250, 245, 0.94);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 5px 13px;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(52, 40, 32, 0.08);
+  transition: background-color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.ctrl-btn:hover {
+  background: #fff;
+  border-color: var(--denim);
+  transform: translateY(-1px);
+}
+
+.alpaca-field {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.alpaca-actor {
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.alpaca-sprite-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.alpaca-sprite {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 8px rgba(52, 40, 32, 0.14));
+  transform-origin: bottom center;
+  will-change: transform;
+}
+
+.alpaca-shadow {
+  width: 56px;
+  height: 10px;
+  background: rgba(52, 40, 32, 0.14);
+  border-radius: 50%;
+  margin-top: -5px;
+}
+
+.alpaca-actor.is-jumping .alpaca-sprite {
+  animation: alpacaJump 0.56s cubic-bezier(0.3, 0.9, 0.4, 1.2);
+}
+
+.alpaca-actor.is-hop .alpaca-sprite {
+  animation: alpacaMiniHop 0.42s ease-in-out;
+}
+
+.alpaca-actor.is-resting .alpaca-sprite {
+  animation: alpacaBreathe var(--breath-dur, 3.2s) ease-in-out infinite;
+  animation-delay: var(--anim-delay, 0s);
+}
+
+.alpaca-actor.is-walking .alpaca-sprite {
+  animation: alpacaWaddle var(--walk-dur, 0.56s) ease-in-out infinite;
+  animation-delay: var(--anim-delay, 0s);
+}
+
+.alpaca-actor.is-sliding .alpaca-sprite {
+  animation: alpacaGlide 1.8s ease-in-out infinite;
+  animation-delay: var(--anim-delay, 0s);
+}
+
+@keyframes alpacaJump {
+  0% { transform: scaleX(var(--facing, 1)) translateY(0) scale(1, 1); }
+  28% { transform: scaleX(var(--facing, 1)) translateY(-28px) scale(0.95, 1.06); }
+  68% { transform: scaleX(var(--facing, 1)) translateY(0) scale(1.05, 0.93); }
+  100% { transform: scaleX(var(--facing, 1)) translateY(0) scale(1, 1); }
+}
+
+@keyframes alpacaMiniHop {
+  0%, 100% { transform: scaleX(var(--facing, 1)) translateY(0); }
+  45% { transform: scaleX(var(--facing, 1)) translateY(-12px) rotate(1.5deg); }
+}
+
+@keyframes alpacaBreathe {
+  0%, 100% { transform: scaleX(var(--facing, 1)) translateY(0) scaleY(1) rotate(-0.6deg); }
+  50% { transform: scaleX(var(--facing, 1)) translateY(-2px) scaleY(1.015) rotate(0.8deg); }
+}
+
+@keyframes alpacaWaddle {
+  0%, 100% { transform: scaleX(var(--facing, 1)) translateY(0) rotate(-2.4deg); }
+  50% { transform: scaleX(var(--facing, 1)) translateY(-6px) rotate(2.4deg); }
+}
+
+@keyframes alpacaGlide {
+  0%, 100% { transform: scaleX(var(--facing, 1)) translateY(0) rotate(-1deg); }
+  50% { transform: scaleX(var(--facing, 1)) translateY(-2.5px) rotate(1deg); }
+}
+
+.alpaca-bubble {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  padding: 5px 11px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(52, 40, 32, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 40;
+}
+
+.alpaca-bubble.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* クリック時の控えめな波紋 */
+.call-ripple {
+  position: absolute;
+  width: 24px;
+  height: 10px;
+  border: 1.5px solid rgba(52, 40, 32, 0.35);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.4);
+  pointer-events: none;
+  z-index: 15;
+  animation: rippleOut 0.65s ease-out forwards;
+}
+
+@keyframes rippleOut {
+  0% { transform: translate(-50%, -50%) scale(0.4); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+}
+
+/* クリック時の控えめなドット */
+.pop-dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--lavender);
+  pointer-events: none;
+  z-index: 45;
+  animation: dotFloat 0.8s ease-out forwards;
+}
+
+@keyframes dotFloat {
+  0% { transform: translate(0, 0) scale(0.7); opacity: 0.85; }
+  100% { transform: translate(var(--dx), -34px) scale(1.1); opacity: 0; }
+}
+
+/* Sections */
+.section {
+  padding: 84px 0;
+}
+
+.section-heading {
+  font-family: "Shippori Mincho", serif;
+  font-size: clamp(1.45rem, 2.8vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.body-text {
+  font-size: 0.94rem;
+  color: var(--ink-muted);
+  margin-bottom: 14px;
+}
+
+/* About Section */
+.about-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 22px;
+}
+
+.profile-photo {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+}
+
+.profile-name {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 1.12rem;
+}
+
+.profile-meta {
+  font-size: 0.82rem;
+  color: var(--denim);
+}
+
+.inline-links {
+  display: flex;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.text-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--denim);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(52, 82, 110, 0.35);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.text-link:hover {
+  border-color: var(--denim);
+}
+
+.about-notes {
+  border-top: 1px solid var(--line);
+}
+
+.note-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.note-alpaca {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.note-item h3 {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.note-item p {
+  font-size: 0.88rem;
+  color: var(--ink-muted);
+}
+
+/* Tools Section（罫線リスト） */
+.tools-section {
+  background-color: var(--paper-alt);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-header-left {
+  margin-bottom: 36px;
+}
+
+.tools-ledger {
+  border-top: 1px solid var(--line-strong);
+}
+
+.ledger-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.ledger-name {
+  display: block;
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.ledger-role {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--denim);
+  margin-top: 2px;
+}
+
+.ledger-row dd p {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+}
+
+/* Articles Section（索引・目次風） */
+.articles-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.tab-btn.active,
+.tab-btn:hover {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.article-index {
+  list-style: none;
+  border-top: 1px solid var(--line-strong);
+}
+
+.article-row {
+  border-bottom: 1px solid var(--line);
+}
+
+.article-row.is-hidden {
+  display: none;
+}
+
+.article-row-link {
+  display: grid;
+  grid-template-columns: 92px 1fr 28px;
+  gap: 20px;
+  align-items: baseline;
+  padding: 24px 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.18s ease;
+}
+
+.article-row-link:hover {
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.article-cat {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--denim);
+  letter-spacing: 0.04em;
+}
+
+.article-row-body h3 {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.08rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+
+.article-row-body p {
+  font-size: 0.86rem;
+  color: var(--ink-muted);
+}
+
+.article-go {
+  font-size: 1rem;
+  color: var(--ink-muted);
+  text-align: right;
+  transition: transform 0.18s;
+}
+
+.article-row-link:hover .article-go {
+  color: var(--note);
+  transform: translate(2px, -2px);
+}
+
+.articles-footer {
+  margin-top: 34px;
+}
+
+/* Omikuji Section */
+.omikuji-section {
+  padding-top: 20px;
+  padding-bottom: 96px;
+}
+
+.omikuji-panel {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.omikuji-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.omikuji-stage {
+  text-align: center;
+  padding: 24px 20px;
+  border-left: 1px solid var(--line);
+  transition: opacity 0.2s;
+}
+
+.omikuji-img {
+  display: block;
+  margin: 0 auto 14px;
+  width: 132px;
+  height: 132px;
+  object-fit: contain;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.omikuji-img.shuffling {
+  opacity: 0.55;
+  transform: translateY(-4px);
+}
+
+.omikuji-quote {
+  font-family: "Shippori Mincho", serif;
+  font-size: 1.06rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.omikuji-note {
+  font-size: 0.84rem;
+  color: var(--ink-muted);
+}
+
+/* Floating Note Link（控えめ） */
+.floating-note-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 90;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px 8px 10px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(52, 40, 32, 0.2);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease, background-color 0.2s;
+}
+
+.floating-note-btn.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.floating-note-btn:hover {
+  background: var(--note);
+}
+
+.floating-alpaca {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  background: var(--surface);
+  border-radius: 50%;
+  padding: 2px;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--line-strong);
+  background: var(--paper-alt);
+  padding: 40px 0 28px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-alpaca {
+  width: 48px;
+  height: auto;
+}
+
+.footer-name {
+  font-family: "Shippori Mincho", serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.footer-sub {
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.footer-links a:hover {
+  border-color: var(--ink);
+}
+
+.footer-copy {
+  padding-top: 16px;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+/* Responsive */
+@media (max-width: 840px) {
+  .nav-links {
+    display: none;
+  }
+  .about-layout,
+  .omikuji-panel {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .omikuji-stage {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding: 24px 0 0;
+  }
+  .ledger-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 600px) {
+  .br-pc {
+    display: none;
+  }
+  .hero-stage {
+    padding-top: 28px;
+  }
+  .hero-card {
+    padding: 24px 18px;
+  }
+  .stage-caption {
+    display: none;
+  }
+  .alpaca-stage {
+    height: 245px;
+  }
+  .alpaca-field {
+    height: 210px;
+  }
+  .alpaca-sprite {
+    height: 94px;
+  }
+  .article-row-link {
+    grid-template-columns: 1fr 22px;
+    gap: 8px 12px;
+  }
+  .article-cat {
+    grid-column: 1 / -1;
+  }
+  .omikuji-panel {
+    padding: 26px 20px;
+  }
+}
