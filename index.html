@@ -5,24 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AIと旅する係長｜現場の仕事を軽くして、旅に出る。</title>
   <meta name="description" content="製造業の現場でDXを進めてきた係長。ChatGPT・Gemini・NotebookLM・GASで、会議・資料作成・問い合わせ対応・紙業務を少しずつ軽くする実務記事を書いています。AIで定時退社し、浮いた時間で旅に出る。" />
+  <link rel="canonical" href="https://zuotenghiro28-png.github.io/alpaca-portal/" />
+  <meta property="og:site_name" content="AIと旅する係長" />
   <meta property="og:title" content="AIと旅する係長｜現場の仕事を軽くして、旅に出る。" />
   <meta property="og:description" content="製造業の現場DXを少しずつ進める係長のポータルサイト。noteの実務記事・LINEスタンプ・遊ぶアルパカたちをまとめています。" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://zuotenghiro28-png.github.io/alpaca-portal/" />
+  <meta property="og:image" content="https://zuotenghiro28-png.github.io/alpaca-portal/avatar.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@500;600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@600;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=20261127b" />
 </head>
 <body>
+  <a href="#about" class="skip-link">本文へ移動</a>
+
   <!-- ヘッダー -->
   <header class="site-header" id="siteHeader">
     <div class="container header-inner">
       <a href="#top" class="brand">
-        <img src="avatar.png" alt="AIと旅する係長" class="brand-avatar" />
+        <img src="avatar.png?v=20261127a" alt="AIと旅する係長" width="36" height="36" class="brand-avatar" />
         <span class="brand-name">AIと旅する係長</span>
       </a>
-      <nav class="nav-links" aria-label="メニュー">
+      <nav class="nav-links" aria-label="主要メニュー">
         <a href="#about">係長のこと</a>
         <a href="#problems">仕事の困りごと</a>
         <a href="#articles">おすすめ記事</a>
@@ -93,10 +99,10 @@
             <button type="button" class="ctrl-btn" id="btnAddAlpaca">
               もう1匹呼ぶ（<span id="alpacaCount">6</span>）
             </button>
-            <button type="button" class="ctrl-btn" id="btnEnergyMode">
+            <button type="button" class="ctrl-btn" id="btnEnergyMode" aria-pressed="false">
               省エネ：<span id="energyLabel">OFF</span>
             </button>
-            <button type="button" class="ctrl-btn" id="btnTimeToggle">
+            <button type="button" class="ctrl-btn" id="btnTimeToggle" aria-pressed="false">
               <span id="timeLabel">17:30の空気に変える</span>
             </button>
           </div>
@@ -113,8 +119,8 @@
       </svg>
     </div>
 
-    <!-- 1. 係長のこと（クリーム背景） -->
-    <section id="about" class="section section-cream about-section">
+    <!-- 1. 係長のこと（クリーム背景・非対称2カラム） -->
+    <section id="about" class="section section-cream section-space-standard about-section">
       <div class="container">
         <div class="about-layout">
           <div class="about-intro">
@@ -127,7 +133,7 @@
             </div>
 
             <div class="profile-row">
-              <img src="avatar.png" alt="AIと旅する係長" class="profile-photo" />
+              <img src="avatar.png?v=20261127a" alt="AIと旅する係長" width="72" height="72" class="profile-photo" />
               <div>
                 <p class="profile-name">AIと旅する係長</p>
                 <p class="profile-meta">製造業・現場のDX担当</p>
@@ -145,7 +151,7 @@
               <a href="https://note.com/proper_stork2598/n/neab729cf4d07" target="_blank" rel="noopener noreferrer" class="intro-article-link">
                 <span class="intro-link-label">はじめての方へ</span>
                 <span class="intro-link-title">はじめまして｜AIで手作業を減らし、旅する時間を取り戻す係長です</span>
-                <span class="intro-link-arrow" aria-hidden="true">記事を読む ↗</span>
+                <span class="intro-link-arrow" aria-hidden="true">自己紹介記事を読む ↗</span>
               </a>
             </div>
 
@@ -162,7 +168,7 @@
           <div class="about-notes">
             <article class="note-item">
               <div class="note-alpaca-slot">
-                <img src="alpaca_02.png" alt="" class="note-alpaca" aria-hidden="true" />
+                <img src="alpaca_02.png" alt="" width="70" height="110" class="note-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
               </div>
               <div class="note-item-body">
                 <h3>無理に全部を変えない</h3>
@@ -171,7 +177,7 @@
             </article>
             <article class="note-item">
               <div class="note-alpaca-slot">
-                <img src="alpaca_04.png" alt="" class="note-alpaca" aria-hidden="true" />
+                <img src="alpaca_04.png" alt="" width="57" height="112" class="note-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
               </div>
               <div class="note-item-body">
                 <h3>紙・Excel・会議のリアルに効くこと</h3>
@@ -180,7 +186,7 @@
             </article>
             <article class="note-item">
               <div class="note-alpaca-slot">
-                <img src="alpaca_12.png" alt="" class="note-alpaca" aria-hidden="true" />
+                <img src="alpaca_12.png" alt="" width="63" height="115" class="note-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
               </div>
               <div class="note-item-body">
                 <h3>浮いた時間は、ちゃんと旅に使う</h3>
@@ -199,34 +205,42 @@
       </svg>
     </div>
 
-    <!-- 2. 仕事の困りごと（淡い若草色背景） -->
-    <section id="problems" class="section section-grass problems-section">
+    <!-- 2. 仕事の困りごと（淡い若草色背景・段違い2列＋左上円バッジ） -->
+    <section id="problems" class="section section-grass section-space-standard problems-section">
       <div class="container">
-        <div class="section-header-with-guide">
+        <div class="section-header-with-guide problems-header">
           <div class="section-header-text">
-            <div class="heading-with-leaf">
-              <svg class="leaf-accent" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                <path d="M20 4C11 4 5 9 4 19c2-2 5-3 8-3 5 0 8-4 8-12Z" fill="currentColor" opacity="0.24" />
-                <path d="M4 20c3-5 7-9 13-12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
-              </svg>
-              <h2 class="section-heading">明日の仕事を、ひとつ軽くする。</h2>
-            </div>
+            <p class="problems-kicker">
+              <span class="problems-kicker-main">困りごとから探す</span>
+              <span class="problems-kicker-sub">/ 仕事の困りごと</span>
+            </p>
+            <h2 class="section-heading problems-heading">明日の仕事を、<br />ひとつ軽くする。</h2>
             <p class="section-sub">今日いちばん気になる困りごとから、読んでみませんか。</p>
           </div>
           <div class="section-guide-alpaca" aria-hidden="true">
-            <img src="alpaca_05.png" alt="" class="guide-alpaca-img" />
+            <img src="alpaca_05.png" alt="" width="58" height="112" class="guide-alpaca-img" loading="lazy" decoding="async" />
           </div>
         </div>
 
         <div class="problems-grid">
           <article class="problem-panel">
-            <div class="problem-alpaca-box">
-              <img src="alpaca_06.png" alt="" class="problem-alpaca" aria-hidden="true" />
+            <div class="problem-badge" aria-hidden="true">
+              <svg class="problem-badge-ring" viewBox="0 0 88 88" width="88" height="88">
+                <circle cx="44" cy="44" r="42" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="198 66" stroke-dashoffset="-66" />
+              </svg>
+              <span class="problem-badge-label">お悩み</span>
+              <span class="problem-badge-num">01</span>
             </div>
-            <div class="problem-content">
-              <p class="problem-tool-note">Gmail・GAS・生成AI</p>
-              <h3>問い合わせの仕分け、まだ1件ずつ？</h3>
+            <h3 class="problem-title">
+              問い合わせの仕分け、<br />
+              <span class="problem-em">まだ1件ずつ？</span>
+            </h3>
+            <div class="problem-visual">
+              <img src="alpaca_06.png" alt="" width="121" height="113" class="problem-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
+            </div>
+            <div class="problem-foot">
               <p class="problem-desc">Gmailの内容を分類し、未対応の問い合わせを管理表で追えるようにする考え方。</p>
+              <p class="problem-tool-note">補足ツール：Gmail・GAS・生成AI</p>
               <a href="https://note.com/proper_stork2598/n/n4bf24f2c4d90" target="_blank" rel="noopener noreferrer" class="problem-link">
                 <span>仕分けの流れを読む</span>
                 <span class="arrow-icon" aria-hidden="true">→</span>
@@ -235,13 +249,23 @@
           </article>
 
           <article class="problem-panel">
-            <div class="problem-alpaca-box">
-              <img src="alpaca_09.png" alt="" class="problem-alpaca" aria-hidden="true" />
+            <div class="problem-badge" aria-hidden="true">
+              <svg class="problem-badge-ring" viewBox="0 0 88 88" width="88" height="88">
+                <circle cx="44" cy="44" r="42" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="198 66" stroke-dashoffset="-66" />
+              </svg>
+              <span class="problem-badge-label">お悩み</span>
+              <span class="problem-badge-num">02</span>
             </div>
-            <div class="problem-content">
-              <p class="problem-tool-note">スプレッドシート・GAS・生成AI</p>
-              <h3>売上の異変、月末を待たずに。</h3>
+            <h3 class="problem-title">
+              売上の異変、<br />
+              <span class="problem-em">月末を待たずに。</span>
+            </h3>
+            <div class="problem-visual">
+              <img src="alpaca_09.png" alt="" width="94" height="117" class="problem-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
+            </div>
+            <div class="problem-foot">
               <p class="problem-desc">毎朝の数字を過去の実績と比べ、確認が必要なときに知らせる仕組み。</p>
+              <p class="problem-tool-note">補足ツール：スプレッドシート・GAS・生成AI</p>
               <a href="https://note.com/proper_stork2598/n/na8b2edaf7fe6" target="_blank" rel="noopener noreferrer" class="problem-link">
                 <span>数字を見守る方法を読む</span>
                 <span class="arrow-icon" aria-hidden="true">→</span>
@@ -250,13 +274,23 @@
           </article>
 
           <article class="problem-panel">
-            <div class="problem-alpaca-box">
-              <img src="alpaca_07.png" alt="" class="problem-alpaca" aria-hidden="true" />
+            <div class="problem-badge" aria-hidden="true">
+              <svg class="problem-badge-ring" viewBox="0 0 88 88" width="88" height="88">
+                <circle cx="44" cy="44" r="42" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="198 66" stroke-dashoffset="-66" />
+              </svg>
+              <span class="problem-badge-label">お悩み</span>
+              <span class="problem-badge-num">03</span>
             </div>
-            <div class="problem-content">
-              <p class="problem-tool-note">Googleドライブ・GAS</p>
-              <h3>そのファイル、共有したままかも。</h3>
+            <h3 class="problem-title">
+              そのファイル、<br />
+              <span class="problem-em">共有したままかも。</span>
+            </h3>
+            <div class="problem-visual">
+              <img src="alpaca_07.png" alt="" width="124" height="108" class="problem-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
+            </div>
+            <div class="problem-foot">
               <p class="problem-desc">Driveの指定フォルダから共有範囲を一覧にして、確認する資料を見つけます。</p>
+              <p class="problem-tool-note">補足ツール：Googleドライブ・GAS</p>
               <a href="https://note.com/proper_stork2598/n/n6da30e13a9ad" target="_blank" rel="noopener noreferrer" class="problem-link">
                 <span>共有の確認方法を読む</span>
                 <span class="arrow-icon" aria-hidden="true">→</span>
@@ -265,13 +299,23 @@
           </article>
 
           <article class="problem-panel">
-            <div class="problem-alpaca-box">
-              <img src="alpaca_04.png" alt="" class="problem-alpaca" aria-hidden="true" />
+            <div class="problem-badge" aria-hidden="true">
+              <svg class="problem-badge-ring" viewBox="0 0 88 88" width="88" height="88">
+                <circle cx="44" cy="44" r="42" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="198 66" stroke-dashoffset="-66" />
+              </svg>
+              <span class="problem-badge-label">お悩み</span>
+              <span class="problem-badge-num">04</span>
             </div>
-            <div class="problem-content">
-              <p class="problem-tool-note">ChatGPT・Gemini</p>
-              <h3>「AIに頼んだのに修正だらけ」を減らす。</h3>
+            <h3 class="problem-title">
+              「AIに頼んだのに<br />
+              <span class="problem-em">修正だらけ」を減らす。</span>
+            </h3>
+            <div class="problem-visual">
+              <img src="alpaca_04.png" alt="" width="57" height="112" class="problem-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
+            </div>
+            <div class="problem-foot">
               <p class="problem-desc">一度に全部を任せず、小さく分けて試す。仕事に定着させるためのルール。</p>
+              <p class="problem-tool-note">補足ツール：ChatGPT・Gemini</p>
               <a href="https://note.com/proper_stork2598/n/nc4adfe39be26" target="_blank" rel="noopener noreferrer" class="problem-link">
                 <span>5つのルールを読む</span>
                 <span class="arrow-icon" aria-hidden="true">→</span>
@@ -289,8 +333,8 @@
       </svg>
     </div>
 
-    <!-- 3. おすすめ記事（クリーム背景） -->
-    <section id="articles" class="section section-cream articles-section">
+    <!-- 3. おすすめ記事（クリーム背景・広め余白・フィーチャー＋2列） -->
+    <section id="articles" class="section section-cream section-space-wide articles-section">
       <div class="container">
         <div class="section-header-with-guide">
           <div class="section-header-text">
@@ -302,21 +346,20 @@
               <h2 class="section-heading">いまの仕事に効く、おすすめ記事。</h2>
             </div>
             <p class="section-sub">
-              小さく試せる自動化から、仕事の進め方まで。<br class="br-pc" />
-              困りごとに合わせて、6本を選びました。
+              小さく試せる自動化から、仕事の進め方まで。困りごとに合わせて、6本を選びました。
             </p>
           </div>
           <div class="section-guide-alpaca" aria-hidden="true">
-            <img src="alpaca_11.png" alt="" class="guide-alpaca-img" />
+            <img src="alpaca_11.png" alt="" width="43" height="113" class="guide-alpaca-img" loading="lazy" decoding="async" />
           </div>
         </div>
 
         <div class="articles-toolbar">
           <div class="filter-tabs" role="tablist" aria-label="記事の絞り込み">
-            <button type="button" class="tab-btn active" data-filter="all" aria-selected="true">すべて</button>
-            <button type="button" class="tab-btn" data-filter="gas" aria-selected="false">GAS・自動化</button>
-            <button type="button" class="tab-btn" data-filter="ai" aria-selected="false">AI活用・制作</button>
-            <button type="button" class="tab-btn" data-filter="work" aria-selected="false">仕事の進め方</button>
+            <button type="button" class="tab-btn active" role="tab" aria-controls="articlesGrid" data-filter="all" aria-selected="true">すべて</button>
+            <button type="button" class="tab-btn" role="tab" aria-controls="articlesGrid" data-filter="gas" aria-selected="false">GAS・自動化</button>
+            <button type="button" class="tab-btn" role="tab" aria-controls="articlesGrid" data-filter="ai" aria-selected="false">AI活用・制作</button>
+            <button type="button" class="tab-btn" role="tab" aria-controls="articlesGrid" data-filter="work" aria-selected="false">仕事の進め方</button>
           </div>
           <p class="articles-count" id="articlesCount" aria-live="polite">全6件中 6件を表示</p>
         </div>
@@ -328,6 +371,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/306796546/rectangle_large_type_2_32827d796e0ff3fea44ee320487a17d5.png?fit=bounds&quality=85&width=1280"
                 alt="生成AIを導入したのに仕事が変わらない人へ｜最初の3ヶ月で失敗して分かった「定着する5つのルール」"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -364,6 +409,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/336746084/rectangle_large_type_2_36a828123fd66f00c63f22f78fedf006.png?fit=bounds&quality=85&width=1280"
                 alt="問い合わせメール、まだ1件ずつ仕分けていますか？GAS×AIで対応漏れを防ぐ仕組み"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -399,6 +446,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/335906339/rectangle_large_type_2_37726e00d4c5e733043ad5f9478be0ac.png?fit=bounds&quality=85&width=1280"
                 alt="売上が落ちても、月末まで気づかない？GAS×AIで始めるKPIの自動監視"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -434,6 +483,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/335470427/rectangle_large_type_2_a44f7aceed8360b8e8373c8ec71ec471.png?fit=bounds&quality=85&width=1280"
                 alt="Googleドライブ、誰に共有したか覚えていますか？GASで始めるファイル管理の自動化"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -469,6 +520,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/334715278/rectangle_large_type_2_87c99ca343078c86c43b46ffa13fd82a.png?fit=bounds&quality=85&width=1280"
                 alt="仕事を頼まれたら、最初の30分で何をするべきか"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -504,6 +557,8 @@
               <img
                 src="https://assets.st-note.com/production/uploads/images/308060649/rectangle_large_type_2_d31af7db933d9026bbb6d023d18fdec4.png?fit=bounds&quality=85&width=1280"
                 alt="AIでLPを作ったら全部似て見えた。原因は「作る順番」だった"
+                width="1280"
+                height="670"
                 class="article-thumb"
                 loading="lazy"
                 decoding="async"
@@ -551,7 +606,7 @@
     </div>
 
     <!-- 4. 今日のひとこと（読書後のひと休みエリア・淡い若草色背景） -->
-    <section id="omikuji" class="section section-grass omikuji-section">
+    <section id="omikuji" class="section section-grass section-space-standard omikuji-section">
       <div class="container">
         <div class="omikuji-panel">
           <div class="omikuji-copy">
@@ -561,8 +616,7 @@
             </div>
             <p class="omikuji-lead-label">今日のひとこと</p>
             <p class="body-text">
-              記事を読んだあとや、仕事が詰まってきたときにひと息どうぞ。<br />
-              LINEスタンプのアルパカが、帰るタイミングのきっかけをひと言だけ返してくれます。
+              記事を読んだあとや、仕事が詰まってきたときにひと息どうぞ。LINEスタンプのアルパカが、帰るタイミングのきっかけをひと言だけ返してくれます。
             </p>
             <div class="omikuji-actions">
               <button type="button" class="btn btn-outline" id="btnOmikuji">
@@ -574,9 +628,9 @@
             </div>
           </div>
 
-          <div class="omikuji-stage" id="stampResultCard">
+          <div class="omikuji-stage" id="stampResultCard" aria-live="polite">
             <div class="omikuji-cushion">
-              <img src="alpaca_02.png" alt="今日の係長" id="omikujiImg" class="omikuji-img" />
+              <img src="alpaca_02.png" alt="今日の係長" id="omikujiImg" width="70" height="110" class="omikuji-img" loading="lazy" decoding="async" />
             </div>
             <p class="omikuji-quote" id="omikujiQuote">「今日は無理せずに」</p>
             <p class="omikuji-note" id="omikujiMsg">区切りのいいところで切り上げて、続きは明日の自分に任せましょう。</p>
@@ -588,7 +642,7 @@
 
   <!-- スクロール後の控えめな追従noteリンク -->
   <a href="https://note.com/proper_stork2598/portal" target="_blank" rel="noopener noreferrer" class="floating-note-btn" id="floatingNoteBtn" aria-label="noteポータルへ行く">
-    <img src="alpaca_12.png" alt="" class="floating-alpaca" aria-hidden="true" />
+    <img src="alpaca_12.png" alt="" width="63" height="115" class="floating-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
     <span>noteポータルへ ↗</span>
   </a>
 
@@ -596,7 +650,7 @@
   <footer class="site-footer" id="siteFooter">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="alpaca_01.png" alt="" class="footer-alpaca" aria-hidden="true" />
+        <img src="alpaca_01.png" alt="" width="57" height="109" class="footer-alpaca" loading="lazy" decoding="async" aria-hidden="true" />
         <div>
           <p class="footer-name">AIと旅する係長</p>
           <p class="footer-sub">ありがとう。しみた。またnoteでお会いしましょう。</p>
@@ -613,6 +667,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20261127a"></script>
 </body>
 </html>

@@ -1,36 +1,41 @@
 ﻿// AIと旅する係長 ポータル
 
 const ALPACA_CATALOG = [
-  { src: "alpaca_05.png", mode: "walk", lines: ["いま向かってます", "定時で帰ります", "ちょっと見回り中"] },
-  { src: "alpaca_10.png", mode: "slide", lines: ["本日は省エネです", "台車がいちばん楽", "自動化に任せてます"] },
-  { src: "alpaca_08.png", mode: "idle", lines: ["本日も、なで待ち", "ちょっと休憩中", "ぼーっとしてます"] },
-  { src: "alpaca_09.png", mode: "idle", lines: ["待ってないですよ。首は伸びたけど。", "17:30まだかな", "次の旅先を考えてます"] },
-  { src: "alpaca_12.png", mode: "walk", lines: ["着きました。もふ", "荷物は少なめです", "そろそろ出かけます"] },
-  { src: "alpaca_02.png", mode: "idle", lines: ["今日は無理せずに", "いったん座りましょう", "続きは明日でいいかも"] },
-  { src: "alpaca_03.png", mode: "idle", lines: ["了解です。ぬくぬく", "ひざ掛けが欠かせません", "あたたかくしてどうぞ"] },
-  { src: "alpaca_04.png", mode: "idle", lines: ["ちょっと考える顔です", "これGASで減らせそう", "うーん、なるほど"] },
-  { src: "alpaca_01.png", mode: "idle", lines: ["ありがとう。しみた", "いつもお疲れさまです", "助かります"] },
-  { src: "alpaca_06.png", mode: "idle", lines: ["ちょっと失礼します", "そっと見てます", "おじゃまします"] },
-  { src: "alpaca_07.png", mode: "idle", lines: ["重さは気持ちです", "資料を読み込み中", "ちょっと一息"] },
-  { src: "alpaca_11.png", mode: "idle", lines: ["おはよう。毛は元気", "まずはコーヒーから", "今日もぼちぼちで"] }
+  { src: "alpaca_05.png", w: 58, h: 112, mode: "walk", lines: ["いま向かってます", "定時で帰ります", "ちょっと見回り中"] },
+  { src: "alpaca_10.png", w: 121, h: 104, mode: "slide", lines: ["本日は省エネです", "台車がいちばん楽", "自動化に任せてます"] },
+  { src: "alpaca_08.png", w: 43, h: 111, mode: "idle", lines: ["本日も、なで待ち", "ちょっと休憩中", "ぼーっとしてます"] },
+  { src: "alpaca_09.png", w: 94, h: 117, mode: "idle", lines: ["待ってないですよ。首は伸びたけど。", "17:30まだかな", "次の旅先を考えてます"] },
+  { src: "alpaca_12.png", w: 63, h: 115, mode: "walk", lines: ["着きました。もふ", "荷物は少なめです", "そろそろ出かけます"] },
+  { src: "alpaca_02.png", w: 70, h: 110, mode: "idle", lines: ["今日は無理せずに", "いったん座りましょう", "続きは明日でいいかも"] },
+  { src: "alpaca_03.png", w: 59, h: 113, mode: "idle", lines: ["了解です。ぬくぬく", "ひざ掛けが欠かせません", "あたたかくしてどうぞ"] },
+  { src: "alpaca_04.png", w: 57, h: 112, mode: "idle", lines: ["ちょっと考える顔です", "これGASで減らせそう", "うーん、なるほど"] },
+  { src: "alpaca_01.png", w: 57, h: 109, mode: "idle", lines: ["ありがとう。しみた", "いつもお疲れさまです", "助かります"] },
+  { src: "alpaca_06.png", w: 121, h: 113, mode: "idle", lines: ["ちょっと失礼します", "そっと見てます", "おじゃまします"] },
+  { src: "alpaca_07.png", w: 124, h: 108, mode: "idle", lines: ["重さは気持ちです", "資料を読み込み中", "ちょっと一息"] },
+  { src: "alpaca_11.png", w: 43, h: 113, mode: "idle", lines: ["おはよう。毛は元気", "まずはコーヒーから", "今日もぼちぼちで"] }
 ];
 
 const OMIKUJI_STAMPS = [
-  { src: "alpaca_01.png", quote: "「ありがとう。しみた」", note: "忙しくても、ひとこと感謝を返せると現場の空気が少しやわらぎます。" },
-  { src: "alpaca_02.png", quote: "「今日は無理せずに」", note: "区切りのいいところで切り上げて、続きは明日の自分に任せましょう。" },
-  { src: "alpaca_03.png", quote: "「了解です。ぬくぬく」", note: "温かい飲み物を1杯いれてから取りかかるくらいがちょうどいいです。" },
-  { src: "alpaca_04.png", quote: "「ちょっと考える顔です」", note: "行き詰まったら、いま困っていることをそのままAIに書き出してみてください。" },
-  { src: "alpaca_05.png", quote: "「いま向かってます」", note: "大きな改革より、今日の5分を減らす一歩からで十分進みます。" },
-  { src: "alpaca_06.png", quote: "「ちょっと失礼します」", note: "全部を自分で抱え込まず、使えるテンプレートは遠慮なく借りましょう。" },
-  { src: "alpaca_07.png", quote: "「重さは気持ちです」", note: "分厚い資料や議事録は、まずNotebookLMに読ませてから眺めると楽です。" },
-  { src: "alpaca_08.png", quote: "「本日も、なで待ち」", note: "地味な改善ほど気づかれにくいので、自分で自分を労っておきましょう。" },
-  { src: "alpaca_09.png", quote: "「待ってないですよ。首は伸びたけど。」", note: "確認待ちや転記待ちのスキマ時間は、GASに任せるとだいぶ気が楽になります。" },
-  { src: "alpaca_10.png", quote: "「本日は省エネです」", note: "毎日全力だと持ちません。台車に乗るくらいの省エネ運転の日も大事です。" },
-  { src: "alpaca_11.png", quote: "「おはよう。毛は元気」", note: "今日片づけることを3つだけ決めておくと、夕方バタバタしにくくなります。" },
-  { src: "alpaca_12.png", quote: "「着きました。もふ」", note: "仕事が終わったら、浮いた時間でゆっくり好きな場所へ出かけましょう。" }
+  { src: "alpaca_01.png", w: 57, h: 109, quote: "「ありがとう。しみた」", note: "忙しくても、ひとこと感謝を返せると現場の空気が少しやわらぎます。" },
+  { src: "alpaca_02.png", w: 70, h: 110, quote: "「今日は無理せずに」", note: "区切りのいいところで切り上げて、続きは明日の自分に任せましょう。" },
+  { src: "alpaca_03.png", w: 59, h: 113, quote: "「了解です。ぬくぬく」", note: "温かい飲み物を1杯いれてから取りかかるくらいがちょうどいいです。" },
+  { src: "alpaca_04.png", w: 57, h: 112, quote: "「ちょっと考える顔です」", note: "行き詰まったら、いま困っていることをそのままAIに書き出してみてください。" },
+  { src: "alpaca_05.png", w: 58, h: 112, quote: "「いま向かってます」", note: "大きな改革より、今日の5分を減らす一歩からで十分進みます。" },
+  { src: "alpaca_06.png", w: 121, h: 113, quote: "「ちょっと失礼します」", note: "全部を自分で抱え込まず、使えるテンプレートは遠慮なく借りましょう。" },
+  { src: "alpaca_07.png", w: 124, h: 108, quote: "「重さは気持ちです」", note: "分厚い資料や議事録は、まずNotebookLMに読ませてから眺めると楽です。" },
+  { src: "alpaca_08.png", w: 43, h: 111, quote: "「本日も、なで待ち」", note: "地味な改善ほど気づかれにくいので、自分で自分を労っておきましょう。" },
+  { src: "alpaca_09.png", w: 94, h: 117, quote: "「待ってないですよ。首は伸びたけど。」", note: "確認待ちや転記待ちのスキマ時間は、GASに任せるとだいぶ気が楽になります。" },
+  { src: "alpaca_10.png", w: 121, h: 104, quote: "「本日は省エネです」", note: "毎日全力だと持ちません。台車に乗るくらいの省エネ運転の日も大事です。" },
+  { src: "alpaca_11.png", w: 43, h: 113, quote: "「おはよう。毛は元気」", note: "今日片づけることを3つだけ決めておくと、夕方バタバタしにくくなります。" },
+  { src: "alpaca_12.png", w: 63, h: 115, quote: "「着きました。もふ」", note: "仕事が終わったら、浮いた時間でゆっくり好きな場所へ出かけましょう。" }
 ];
 
-// 1. ファーストビュー：アルパカたちの自然な行動AI（既存機能維持）
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// 1. ファーストビュー：アルパカたちの自然な行動AI（既存機能維持＋a11y・reduced-motion対応）
 (function initPlayground() {
   const field = document.getElementById("alpacaField");
   const stage = document.getElementById("meadowStage");
@@ -65,6 +70,7 @@ const OMIKUJI_STAMPS = [
   }
 
   function spawnDots(x, yBottom) {
+    if (prefersReducedMotion) return;
     for (let i = 0; i < 3; i++) {
       const dot = document.createElement("span");
       dot.className = "pop-dot";
@@ -77,9 +83,11 @@ const OMIKUJI_STAMPS = [
   }
 
   function speakActor(actor, customLine) {
-    actor.el.classList.remove("is-jumping");
-    void actor.el.offsetWidth;
-    actor.el.classList.add("is-jumping");
+    if (!prefersReducedMotion) {
+      actor.el.classList.remove("is-jumping");
+      void actor.el.offsetWidth;
+      actor.el.classList.add("is-jumping");
+    }
 
     const line = customLine || actor.data.lines[Math.floor(Math.random() * actor.data.lines.length)];
     actor.bubble.textContent = line;
@@ -115,6 +123,9 @@ const OMIKUJI_STAMPS = [
     const data = ALPACA_CATALOG[catalogIndex % ALPACA_CATALOG.length];
     const el = document.createElement("div");
     el.className = "alpaca-actor";
+    el.setAttribute("role", "button");
+    el.setAttribute("tabindex", "0");
+    el.setAttribute("aria-label", "アルパカ係長に話しかける");
 
     el.style.setProperty("--breath-dur", `${(2.6 + Math.random() * 1.8).toFixed(2)}s`);
     el.style.setProperty("--walk-dur", `${(0.46 + Math.random() * 0.22).toFixed(2)}s`);
@@ -129,7 +140,9 @@ const OMIKUJI_STAMPS = [
 
     const img = document.createElement("img");
     img.src = data.src;
-    img.alt = "アルパカ係長";
+    img.width = data.w;
+    img.height = data.h;
+    img.alt = "";
     img.className = "alpaca-sprite";
     img.draggable = false;
 
@@ -182,6 +195,14 @@ const OMIKUJI_STAMPS = [
       speakActor(actor);
     });
 
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        e.stopPropagation();
+        speakActor(actor);
+      }
+    });
+
     actors.push(actor);
     if (countEl) countEl.textContent = String(actors.length);
   }
@@ -200,16 +221,18 @@ const OMIKUJI_STAMPS = [
     const clickY = e.clientY - rect.top;
     const targetBottom = Math.max(14, Math.min(100, rect.height - clickY - 12));
 
-    const ripple = document.createElement("span");
-    ripple.className = "call-ripple";
-    ripple.style.left = `${e.clientX - rect.left}px`;
-    ripple.style.top = `${clickY}px`;
-    field.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 700);
+    if (!prefersReducedMotion) {
+      const ripple = document.createElement("span");
+      ripple.className = "call-ripple";
+      ripple.style.left = `${e.clientX - rect.left}px`;
+      ripple.style.top = `${clickY}px`;
+      field.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    }
 
     let called = false;
     actors.forEach((a) => {
-      if (a.baseSpeed > 0) {
+      if (a.baseSpeed > 0 && !prefersReducedMotion) {
         a.targetX = Math.max(16, Math.min(rect.width - 104, clickX + (Math.random() * 70 - 35)));
         a.targetY = Math.max(14, Math.min(100, targetBottom + (Math.random() * 24 - 12)));
         a.state = "move";
@@ -222,6 +245,10 @@ const OMIKUJI_STAMPS = [
       } else {
         a.facing = clickX >= a.x ? 1 : -1;
         applyDepthTransform(a);
+        if (!called && prefersReducedMotion) {
+          speakActor(a, "いま向かってます");
+          called = true;
+        }
       }
     });
   });
@@ -316,7 +343,10 @@ const OMIKUJI_STAMPS = [
     }
     requestAnimationFrame(tick);
   }
-  requestAnimationFrame(tick);
+
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(tick);
+  }
 
   if (btnAdd) {
     btnAdd.addEventListener("click", (e) => {
@@ -334,6 +364,7 @@ const OMIKUJI_STAMPS = [
     btnEnergy.addEventListener("click", (e) => {
       e.stopPropagation();
       energySaving = !energySaving;
+      btnEnergy.setAttribute("aria-pressed", String(energySaving));
       if (energyLabel) energyLabel.textContent = energySaving ? "ON" : "OFF";
       actors.forEach((a) => {
         if (energySaving) {
@@ -349,6 +380,7 @@ const OMIKUJI_STAMPS = [
     btnTime.addEventListener("click", (e) => {
       e.stopPropagation();
       isSunset = !isSunset;
+      btnTime.setAttribute("aria-pressed", String(isSunset));
       hero.classList.toggle("is-sunset", isSunset);
       if (timeLabel) timeLabel.textContent = isSunset ? "昼の空気に戻す" : "17:30の空気に変える";
       if (statusBanner) {
@@ -422,8 +454,26 @@ const OMIKUJI_STAMPS = [
   let lastIdx = 1;
   let isRolling = false;
 
+  function applyStamp(item) {
+    img.src = item.src;
+    img.width = item.w;
+    img.height = item.h;
+    quote.textContent = item.quote;
+    msg.textContent = item.note;
+  }
+
   btn.addEventListener("click", () => {
     if (isRolling) return;
+
+    let idx = Math.floor(Math.random() * OMIKUJI_STAMPS.length);
+    if (idx === lastIdx) idx = (idx + 1) % OMIKUJI_STAMPS.length;
+    lastIdx = idx;
+
+    if (prefersReducedMotion) {
+      applyStamp(OMIKUJI_STAMPS[idx]);
+      return;
+    }
+
     isRolling = true;
     btn.disabled = true;
     img.classList.add("shuffling");
@@ -435,16 +485,8 @@ const OMIKUJI_STAMPS = [
       ticks++;
       if (ticks >= 5) {
         clearInterval(timer);
-        let idx = Math.floor(Math.random() * OMIKUJI_STAMPS.length);
-        if (idx === lastIdx) idx = (idx + 1) % OMIKUJI_STAMPS.length;
-        lastIdx = idx;
-
-        const item = OMIKUJI_STAMPS[idx];
-        img.src = item.src;
-        quote.textContent = item.quote;
-        msg.textContent = item.note;
+        applyStamp(OMIKUJI_STAMPS[idx]);
         img.classList.remove("shuffling");
-
         btn.disabled = false;
         isRolling = false;
       }
